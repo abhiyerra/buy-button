@@ -1,0 +1,153 @@
+#+TITLE: Building a Serverless Buy Button with Stripe
+
+  :PROPERTIES:
+  :FILENAME: source/solutions/serverless-ecommerce-with-stripe.html.erb
+  :LAYOUT:   docs
+  :END:
+
+* Introduction
+
+   Running an E-commerce operation shouldn't be rocket science. We should
+   be able to handle increased load indefinitely without the servers
+   melting down on a peak day. In fact all we really should need is a
+   website, a payment processor (we are using [[https://stripe.com][Stripe]]) and a bare minimum
+   of code to get started.
+
+   In this example we will be building an website that sells a book.  It
+   is a completely serverless architecture powered by [[https://aws.amazon.com/lambda/][AWS Lambda]]. With
+   AWS's [[https://aws.amazon.com/free/][Free Tier]] except for the Stripe transaction fees the cost of
+   running this infrastructure should be *near zero dollars* during the
+   first year.
+
+   #+BEGIN_HTML
+<a class="btn btn-primary" href="/examples/serverless-ecommerce/www/">Demo Site</a>
+   #+END_HTML
+
+* Tools
+
+  We will be using the following technologies to run our E-commerce
+  site:
+
+  - [[https://www.cloudflare.com][Cloudflare]]
+  - [[https://aws.amazon.com/s3/][AWS S3]]
+  - [[https://aws.amazon.com/dynamodb/][AWS DynamoDB]]
+  - [[https://aws.amazon.com/lambda/][AWS Lambda]]
+  - [[https://stripe.com][Stripe]]
+
+  We will be using S3 to host our Website, Cloudflare for https and CDN,
+  DynamoDB to keep track of our transactions, Lambda for processing the
+  transactions and creating a charge.
+
+* IAM Role
+
+   Before we get started we need to create an IAM role that we will be
+   using on the website that allows invoking Lambda fuctions.
+
+   Follow [[http://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html][this guide]] for creating an IAM role. Attach the following user
+   policy to that IAM account. Replace the =YOUR_AWS_ACCOUNT_NUMBER= with
+   your AWS account number. What this does is say that the account can
+   only invoke the AWS Lambda function named =ackin_store_example-dev=
+   and nothing else.
+
+   To do this you need to create an IAM Policy that can then be attached
+   to a new IAM user. This is the policy document:
+
+   #+INCLUDE: IAMRole.json src json
+
+* Backend
+
+** DynamoDB Table
+
+   Create a AWS DynamoDB Table with the default settings. We'll name it
+   =AcksinStoreTransactions= with the default key being =customerId= and
+   a string type.
+
+** AWS Lambda Function
+
+   The AWS Lambda function does the following:
+
+   - It receives the =stripeToken=
+   - It creates a Stripe Customer and stores it in our DynamoDB.
+   - It charges the customer.
+   - It returns a link to our content.
+
+*** config.json
+
+#+INCLUDE: config.json.example src json
+
+*** index.js
+
+#+INCLUDE: index.js src js
+
+*** download.js
+
+#+INCLUDE: download.js src js
+
+*** invoice.js
+
+#+INCLUDE: invoice.js src js
+
+*** AWS Lambda Policy
+
+     Here is the Policy file that we need to attach to the function. As
+     always replace =YOUR_AWS_ACCOUNT_NUMBER== with your AWS Account
+     number.
+
+#+include: AcksinStoreExamplePolicy.json src json
+
+* Website
+
+  To process transactions we should do everything on an https enabled
+  site. Unfortunately, https costs money especially when you want to
+  just try out to see if something works. Fortunately for this we can
+  use [[https://www.cloudflare.com/ssl/][Cloudflare]] as the CDN to our AWS S3 website. Cloudflare also
+  provides a free SSL certificate for free.
+
+** Webpage
+
+   Here is an extremely simple Bootstrap powered site featuring a credit
+   card form. We will be selling a book on the site. Store it as
+   =index.html=. As you can see we are including the AWS JS SDK which is
+   what we are using to invoke our Lambda function.
+
+#+INCLUDE: www/index.html src html
+
+** JavaScript
+
+   Here is the corresponding JavaScript for the site. Store it as
+   =js/config.js= and =js/serverless-ecommerce.js=. Get the security
+   credentials from the user you generated and fill in the region that
+   you hosted your AWS Lambda in. Also get your Stripe key and fill it
+   in.
+
+
+*** js/creds.js
+
+#+INCLUDE: www/js/creds.js src js
+
+*** js/serverless-ecommerce.js
+
+#+INCLUDE: www/js/serverless-ecommerce.js src js
+
+** Angular2
+
+#+INCLUDE: www/angular2/purchase-form.ts src js
+
+* Download
+
+Download this solution *$19*.
+
+   Included:
+
+   - AWS Lambda code and policy
+   - AngularJS 2 Component
+   - jQuery Code
+   - Email Support for one year upon purchase
+   - Support for 5 sites
+   - Commercial License
+
+   #+BEGIN_HTML
+   <a href="https://transactions.sendowl.com/products/415001/FD2181FD/purchase" rel="nofollow"><img src="https://transactions.sendowl.com/assets/external/buy-now.png" /></a><script type="text/javascript" src="https://transactions.sendowl.com/assets/sendowl.js" ></script>
+   #+END_HTML
+
+Also available under GNU AGPLv3 on [[https://github.com/acksin/opszero][Github]].

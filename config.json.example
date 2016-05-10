@@ -1,0 +1,15 @@
+{
+    "STORE_TABLE": "AcksinStoreTransactions",
+    "STRIPE_SECRET_KEY": "sk_test_E018BTiHuKj6TmvUNWrL4Ue3",
+    "EMAIL_FROM": "hey@acksin.com",
+    "PRODUCTS": {
+        "ServerlessExampleBook": {
+            "name": "Serverless Example Book",
+            "amount": 1400,
+            "downloadLink": {
+                "s3Bucket": "assets",
+                "s3Key": "foo/bar/book.pdf"
+            }
+        }
+    }
+}
