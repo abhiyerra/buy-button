@@ -16,7 +16,3 @@ README.html:
 	cat README.html >> docs.html.erb
 	rm README.html
 	mv docs.html.erb ../../acksin/acksin.com/source/solutions/serverless-ecommerce-with-stripe.html.erb
-
-clean:
-	rm -f buy_button/README.html
-

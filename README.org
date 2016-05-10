@@ -150,4 +150,4 @@ Download this solution *$19.99*.
    <a href="https://transactions.sendowl.com/products/415001/FD2181FD/purchase" rel="nofollow"><img src="https://transactions.sendowl.com/assets/external/buy-now.png" /></a><script type="text/javascript" src="https://transactions.sendowl.com/assets/sendowl.js" ></script>
    #+END_HTML
 
-Also available under GNU AGPLv3 on [[https://github.com/acksin/opszero-buy-button][Github]].
+Also available under GNU AGPLv3 on [[https://github.com/opszero/buy-button][Github]].
