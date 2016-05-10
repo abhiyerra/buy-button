@@ -1,4 +1,4 @@
-#+TITLE: Building a Serverless Buy Button with Stripe
+#+TITLE: Serverless Buy Button with Stripe
 
   :PROPERTIES:
   :FILENAME: source/solutions/serverless-ecommerce-with-stripe.html.erb
