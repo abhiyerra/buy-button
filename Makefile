@@ -1,7 +1,7 @@
-VERSION := $(shell cat ../VERSION)
+VERSION := $(shell cat package.json | jq -r '.version')
 
 deps: README.html
-	npm install --prefix=. stripe
+	npm install
 
 release:
 	zip -r opszero-buy-button-with-stripe-$(VERSION).zip AcksinStoreExamplePolicy.json Makefile config.json.example download.js index.js invoice.js node_modules www
