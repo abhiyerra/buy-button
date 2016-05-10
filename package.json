@@ -1,0 +1,19 @@
+{
+    "name": "opszero-buy-button",
+    "version": "0.1.2",
+    "description": "Serverless Buy Button Powered By Stripe",
+    "main": "index.js",
+    "license": "AGPL-3.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/acksin/opszero-buy-button.git"
+    },
+    "author": "Acksin",
+    "bugs": {
+        "url": "https://github.com/acksin/opszero-buy-button/issues"
+    },
+    "homepage": "https://www.acksin.com/solutions/serverless-ecommerce-with-stripe/",
+    "dependencies": {
+        "stripe": "^4.6.0"
+    }
+}
