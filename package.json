@@ -1,6 +1,6 @@
 {
     "name": "opszero-buy-button",
-    "version": "0.1.2",
+    "version": "0.2.0",
     "description": "Serverless Buy Button Powered By Stripe",
     "main": "index.js",
     "license": "AGPL-3.0",
