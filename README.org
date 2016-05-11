@@ -133,9 +133,9 @@
 
 #+INCLUDE: www/angular2/purchase-form.ts src js
 
-* Download
+* Commercial License
 
-Download this solution *$19.99*.
+This solution is available under a commercial license for *$19.99*.
 
    Included:
 
@@ -143,7 +143,7 @@ Download this solution *$19.99*.
    - AngularJS 2 Component
    - jQuery Code
    - Email Support for one year upon purchase
-   - Support for 5 sites
+   - 1 Hour of Support. Additional can be purchased.
    - Commercial License
 
    #+BEGIN_HTML
