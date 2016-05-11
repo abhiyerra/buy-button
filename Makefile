@@ -3,8 +3,13 @@ VERSION := $(shell cat package.json | jq -r '.version')
 deps: README.html
 	npm install
 
+install:
+	terraform plan
+	terraform apply
+
 release:
 	zip -r opszero-buy-button-with-stripe-$(VERSION).zip AcksinStoreExamplePolicy.json Makefile config.json.example download.js index.js invoice.js node_modules www
+	cp opszero-buy-button-with-stripe-$(VERSION).zip output.zip
 	curl -T opszero-buy-button-with-stripe-$(VERSION).zip ftp://ftp.sendowl.com --user $(SENDOWL_FTP_USER):$(SENDOWL_FTP_PASSWORD)
 
 README.html:
