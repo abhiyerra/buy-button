@@ -1,0 +1,15 @@
+{
+    "name": "buy-button",
+    "description": "This is a buy button powered by Stripe.",
+    "tags": ["stripe", "ecommerce"],
+    "license": "MIT",
+    "author": "Abhi Yerra",
+    "email": "abhi@acksin.com",
+    "archive": "output.zip",
+    "buildCommand": "make build",
+    "readme": "README.md",
+    "branch": "master",
+    "aws": {
+        "policyFiles": []
+    }
+}

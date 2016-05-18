@@ -20,4 +20,3 @@ README.html:
 	echo "---" >> docs.html.erb
 	cat README.html >> docs.html.erb
 	rm README.html
-	mv docs.html.erb ../../acksin/acksin.com/source/solutions/serverless-ecommerce-with-stripe.html.erb
