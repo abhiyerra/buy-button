@@ -1,6 +1,6 @@
 {
     "name": "buy-button",
-    "description": "This is a buy button powered by Stripe.",
+    "description": "A digital sales buy button powered by Stripe. No need to run servers just run this AWS Lambda function with your files hosted on S3. Also generates one time download links.",
     "tags": ["stripe", "ecommerce"],
     "license": "MIT",
     "author": "Abhi Yerra",
