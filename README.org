@@ -147,7 +147,8 @@ This solution is available under a commercial license for *$19.99*.
    - Commercial License
 
    #+BEGIN_HTML
-   <a href="https://transactions.sendowl.com/products/415001/FD2181FD/purchase" rel="nofollow"><img src="https://transactions.sendowl.com/assets/external/buy-now.png" /></a><script type="text/javascript" src="https://transactions.sendowl.com/assets/sendowl.js" ></script>
+   <script type='text/javascript' src='https://plasso.co/embed/v2/embed.js'></script>
+   <a href="https://plasso.co/s/kcBMcO3FE1" class="plo-button">Buy Now</a>
    #+END_HTML
 
 Also available under GNU AGPLv3 on [[https://github.com/opszero/buy-button][Github]].
